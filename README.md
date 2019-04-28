@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/joaray/healthy_menu.svg?style=svg&circle-token=4055a19daf9bc2180eead61b6e3d82a7ff3ce7c0)](https://circleci.com/gh/joaray/healthy_menu)
+
 # Healthy Menu :green_apple: :strawberry: :banana: :tomato: :eggplant: :herb:
 
 Food planner, for people who like to eat. Tasty and healthy, without spending a fortune.
