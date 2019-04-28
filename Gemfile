@@ -38,7 +38,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # User management
 gem 'devise'
-gem 'haml'
+gem 'omniauth-google-oauth2'
+
+# Views
+#gem 'haml'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
