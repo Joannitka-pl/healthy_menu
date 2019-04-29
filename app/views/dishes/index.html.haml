@@ -1,0 +1,5 @@
+- @dishes.each do |dish|
+  %h4
+    = link_to "#{dish.name}", edit_dish_path(dish)
+    added by
+    = dish.user.nick
