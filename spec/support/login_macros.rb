@@ -20,7 +20,7 @@ module LoginMacros
       provider: "google",
       uid: "12345678910",
       info: {
-        email: ENV["GMAIL"]
+        email: 'test@gmail.com'
       },
       credentials: {
         token: "abcdefg12345",
