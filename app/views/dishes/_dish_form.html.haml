@@ -1,0 +1,9 @@
+= form_for [@dish] do |dish|
+  %h4= dish.label :name
+  %h4= dish.text_field :name
+  %h4= dish.label :details
+  %h4= dish.text_area :details
+  %h4= dish.label :public
+  %h4= dish.check_box :public
+  = dish.submit 'Submit'
+  = link_to "Cancel", dishes_path

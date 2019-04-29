@@ -1,0 +1,5 @@
+%h2= @dish.name
+%h4 added by #{@dish.user.nick}
+- unless @dish.details.empty?
+  %h4= @dish.details
+  = link_to 'Edit', edit_dish_path
