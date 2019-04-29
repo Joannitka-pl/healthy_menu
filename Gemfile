@@ -41,7 +41,7 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 
 # Views
-# gem 'haml'
+gem 'haml'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,7 +51,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'guard-brakeman'
   gem 'guard-reek'
   gem 'guard-rspec'
   gem 'guard-rubocop'
