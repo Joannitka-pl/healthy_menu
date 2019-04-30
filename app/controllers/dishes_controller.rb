@@ -1,7 +1,8 @@
 class DishesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_available_dishes, except: %i[new create]
-  before_action :set_dish, only: %i[show edit update]
+  before_action :set_visible_dishes, only: %i[show index clone]
+  before_action :set_avaiable_dishes, only: %i[edit update destroy]
+  before_action :fetch_dish, only: %i[show clone]
 
   def new
     @dish = Dish.new
@@ -31,8 +32,26 @@ class DishesController < ApplicationController
 
   def show; end
 
-  def index
-    @dishes = Dish.all
+  def index; end
+
+  def destroy
+    @dish.destroy
+    redirect_to dishes_path
+  end
+
+  def clone
+    @dish = Dish.new(
+      user: current_user,
+      name: "#{@dish.name} of #{current_user.nick}",
+      details: @dish.details,
+      public: false
+    )
+    if @dish.save
+      redirect_to dish_path(@dish), notice: 'Dish has been cloned'
+    else
+      flash.now[:alert] = @dish.errors.full_messages.to_sentence
+      render 'show'
+    end
   end
 
   private
@@ -41,12 +60,15 @@ class DishesController < ApplicationController
     params.require(:dish).permit(:name, :details, :public)
   end
 
-  def set_available_dishes
+  def set_visible_dishes
     @dishes = Dish.public_or_own_dishes(current_user).all
   end
 
-  def set_dish
-    @dish = Dish.find(params[:id])
-    render file: Rails.root.join('public', '404.html'), status: :not_found if @dish.blank?
+  def set_avaiable_dishes
+    @dish = Dish.own_dishes(current_user).find(params[:id])
+  end
+
+  def fetch_dish
+    @dish = @dishes.find(params[:id])
   end
 end
