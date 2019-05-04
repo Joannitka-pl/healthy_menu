@@ -1,0 +1,8 @@
+%h2= @dish.name
+%h4 added by #{@dish.user.nick}
+- if @dish.details.present?
+  %h4= @dish.details
+= link_to 'Clone', clone_dish_path, method: :post
+- if @dish.user == current_user
+  = link_to 'Edit', edit_dish_path
+  = link_to 'Delete', dish_path, method: :delete
