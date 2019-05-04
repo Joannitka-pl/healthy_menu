@@ -12,7 +12,7 @@ class DishesController < ApplicationController
     @dish = current_user.dishes.new(check_params)
 
     if @dish.save
-      redirect_to root_path, notice: 'Dish has been added'
+      redirect_to dish_path(@dish), notice: 'Dish has been added'
     else
       flash.now[:alert] = @dish.errors.full_messages.to_sentence
       render 'new'
