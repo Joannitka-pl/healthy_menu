@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 feature 'User management' do
   before :each do
     visit root_path
@@ -21,7 +20,7 @@ feature 'User management' do
     expect(page).to have_content 'Welcome! You have signed up successfully.'
   end
 
-  scenario 'logs in using google oauth2' do
+  scenario 'sign up using google oauth2' do
       stub_omniauth
       click_link 'Sign up'
       expect(page).to have_link 'Sign in with Google'
@@ -42,6 +41,17 @@ feature 'User management' do
     click_link 'Log out'
     expect(current_path).to eq root_path
     expect(page).to have_content 'Signed out successfully.'
+  end
+
+  scenario 'edits user' do
+    login user
+    click_link 'Edit account'
+    fill_in 'Nick', with: 'tester_edited'
+    fill_in 'Current password', with: "#{user.password}"
+    click_button 'Update'
+    expect(current_path).to eq root_path
+    expect(page).to have_content 'tester_edited'
+    expect(page).to have_content 'Your account has been updated successfully.'
   end
 
   scenario 'deletes user' do

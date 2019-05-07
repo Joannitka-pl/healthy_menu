@@ -9,9 +9,9 @@ module LoginMacros
   def login_with_remember_me user
     visit '/users/sign_in'
     fill_in 'Email', with: user.email
-    fill_in('Password', with: user.password)
+    fill_in 'Password', with: user.password
     check 'Remember me'
-    click_button('Log in')
+    click_button 'Log in'
   end
 
   def logout
@@ -24,7 +24,8 @@ module LoginMacros
       provider: "google",
       uid: "12345678910",
       info: {
-        email: 'test@gmail.com'
+        email: 'test@gmail.com',
+        name: 'tester'
       },
       credentials: {
         token: "abcdefg12345",

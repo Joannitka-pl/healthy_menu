@@ -3,15 +3,16 @@ class User < ApplicationRecord
          :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google]
 
+  validates :nick, presence: true
+
   def self.from_omniauth(access_token)
     data = access_token.info
     email = data['email']
     user = User.find_by(email: email)
-
     unless user
       password = Devise.friendly_token[0, 20]
-      user = User.create(nick: data['nick'], email: email, password: password,
-                         password_confirmation: password)
+      user = User.create(nick: data['name'], email: email, password: password,
+                         password_confirmation: password, provider: access_token.provider)
     end
     user
   end

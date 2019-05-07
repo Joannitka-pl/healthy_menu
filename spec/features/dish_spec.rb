@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 feature 'Dish management' do
 
@@ -42,7 +41,7 @@ feature 'Dish management' do
 
       scenario 'edits it' do
         click_link "#{@dish.name}"
-        click_link 'Edit'
+        click_link 'Edit dish'
         fill_in 'Name', with: 'edited_dish'
         click_button 'Submit'
         expect(page).to have_content 'edited_dish'
@@ -55,7 +54,7 @@ feature 'Dish management' do
         click_link "#{@dish.name}"
         click_link 'Clone'
         }.to change(Dish, :count).by(1)
-        expect(page).to have_content "#{@dish.name} of #{@dish.user.nick}"
+        expect(page).to have_content "#{Dish.last.name}"
         expect(page).to have_content 'Dish has been cloned'
       end
     end
@@ -79,7 +78,7 @@ feature 'Dish management' do
 
       scenario 'edits it' do
         click_link "#{@dish.name}"
-        click_link 'Edit'
+        click_link 'Edit dish'
         fill_in 'Name', with: 'edited_dish'
         click_button 'Submit'
         expect(page).to have_content 'edited_dish'
@@ -92,7 +91,7 @@ feature 'Dish management' do
         click_link "#{@dish.name}"
         click_link 'Clone'
         }.to change(Dish, :count).by(1)
-        expect(page).to have_content "#{@dish.name} of #{@dish.user.nick}"
+        expect(page).to have_content "#{Dish.last.name}"
         expect(page).to have_content 'Dish has been cloned'
       end
     end
@@ -116,7 +115,7 @@ feature 'Dish management' do
 
       scenario 'does not edit it' do
         expect(page).to have_content "#{@dish.name}"
-        expect(page).not_to have_link 'Edit'
+        expect(page).not_to have_link 'Edit dish'
       end
 
       scenario 'clones it' do
@@ -124,7 +123,7 @@ feature 'Dish management' do
           click_link "#{@dish.name}"
           click_link 'Clone'
         }.to change(Dish, :count).by(1)
-        expect(page).to have_content "#{@dish.name} of #{@dish.user.nick}"
+        expect(page).to have_content "#{Dish.last.name}"
         expect(page).to have_content 'Dish has been cloned'
       end
     end
