@@ -57,6 +57,15 @@ feature 'Dish management' do
         expect(page).to have_content "#{Dish.last.name}"
         expect(page).to have_content 'Dish has been cloned'
       end
+
+      scenario 'deletes it' do
+        expect {
+          click_link "#{@dish.name}"
+          click_link 'Delete dish'
+        }.to change(Dish, :count).by(-1)
+        expect(current_path).to eq dishes_path
+        expect(page).not_to have_content "#{@dish.name}"
+      end
     end
 
     context 'for public dish of current user' do
@@ -94,6 +103,15 @@ feature 'Dish management' do
         expect(page).to have_content "#{Dish.last.name}"
         expect(page).to have_content 'Dish has been cloned'
       end
+
+      scenario 'deletes it' do
+        expect {
+          click_link "#{@dish.name}"
+          click_link 'Delete dish'
+        }.to change(Dish, :count).by(-1)
+        expect(current_path).to eq dishes_path
+        expect(page).not_to have_content "#{@dish.name}"
+      end
     end
 
     context 'for public dish of other user' do
@@ -114,6 +132,7 @@ feature 'Dish management' do
       end
 
       scenario 'does not edit it' do
+        click_link "#{@dish.name}"
         expect(page).to have_content "#{@dish.name}"
         expect(page).not_to have_link 'Edit dish'
       end
@@ -125,6 +144,12 @@ feature 'Dish management' do
         }.to change(Dish, :count).by(1)
         expect(page).to have_content "#{Dish.last.name}"
         expect(page).to have_content 'Dish has been cloned'
+      end
+
+      scenario 'does not delete it' do
+        click_link "#{@dish.name}"
+        expect(page).to have_content "#{@dish.name}"
+        expect(page).not_to have_link 'Delete dish'
       end
     end
 
