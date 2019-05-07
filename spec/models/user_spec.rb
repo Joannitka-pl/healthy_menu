@@ -34,4 +34,10 @@ describe User do
     user.valid?
     expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
   end
+
+  it 'is invalid without a nick' do
+    user = build(:user, nick: nil)
+    user.valid?
+    expect(user.errors[:nick]).to include("can't be blank")
+  end
 end
