@@ -1,5 +1,19 @@
+= search_form_for @search do |f|
+  = f.label :name_cont
+  = f.search_field :name_cont
+
+= search_form_for @search do |f|
+  = f.label :user_nick_cont
+  = f.search_field :user_nick_cont
+
+= sort_link(@search, :name)
+= sort_link(@search, :created_at)
+= sort_link(@search, :user_nick)
+
 - @dishes.each do |dish|
   %h4
     = link_to "#{dish.name}", dish_path(dish)
-    added by
+    added at
+    = dish.created_at.strftime('%Y-%m-%d')
+    by
     = dish.user.nick

@@ -32,7 +32,10 @@ class DishesController < ApplicationController
 
   def show; end
 
-  def index; end
+  def index
+    @search = @dishes.ransack(params[:q])
+    @dishes = @search.result
+  end
 
   def destroy
     @dish.destroy
