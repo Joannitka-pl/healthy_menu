@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title HealthyMenu
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.navbar.navbar-inverse
+      .container-fluid
+        %ul.nav.navbar-nav
+          - if user_signed_in?
+            %li
+              = link_to new_dish_path do
+                New dish
+                %span.glyphicon.glyphicon-plus
+            %li
+              = link_to dishes_path do
+                All dishes
+                %span.glyphicon.glyphicon-list
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to user_registration_path, method: :delete do
+                Delete account
+                %span.glyphicon.glyphicon-remove
+            %li
+              = link_to edit_user_registration_path do
+                Edit account
+                %span.glyphicon.glyphicon-edit
+            %li
+              = link_to destroy_user_session_path, method: :delete do
+                Log out
+                %span.glyphicon.glyphicon-log-out
+          - else
+            %li
+              = link_to new_user_registration_path do
+                Sign up
+                %span.class.glyphicon.glyphicon-user
+            %li
+              = link_to new_user_session_path do
+                Login
+                %span.glyphicon.glyphicon-log-in
+    = yield
+    %p.notice= notice
+    %p.alert= alert

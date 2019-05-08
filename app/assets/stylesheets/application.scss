@@ -1,0 +1,42 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+header.navbar {
+  background-color: #2B435D;
+  border-color: #2B435D;
+  border-radius: 0%;
+}
+
+body {
+  background-size: cover;
+}
+
+.index-bg {
+  background-image: url('index2.jpg');
+}
+
+.element-bg {
+  background-image: url('element.jpg');
+}
+
+.home-bg {
+  background-image: url('home_menu1.jpg');
+}
+
+.notice {
+  color: #006633;
+  font-weight: bold;
+  font-size: 2em;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.alert {
+  color: #990000;
+  font-weight: bold;
+  font-size: 2em;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
