@@ -64,11 +64,11 @@ class DishesController < ApplicationController
   end
 
   def set_visible_dishes
-    @dishes = Dish.public_or_own_dishes(current_user).all
+    @dishes = Dish.published_or_own(current_user).all
   end
 
   def set_avaiable_dishes
-    @dish = Dish.own_dishes(current_user).find(params[:id])
+    @dish = Dish.own(current_user).find(params[:id])
   end
 
   def fetch_dish

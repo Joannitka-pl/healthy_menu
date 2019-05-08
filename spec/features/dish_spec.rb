@@ -22,7 +22,7 @@ feature 'Dish management' do
       expect(page).to have_content 'Dish has been added'
     end
 
-    context 'for private dish of current user' do
+    context 'for personal dish of current user' do
       before :each do
         @dish = create(:dish, user: user, public: false)
         click_link 'All dishes'
@@ -189,7 +189,7 @@ feature 'Dish management' do
       end
     end
 
-    context 'for private dish of other user' do
+    context 'for personal dish of other user' do
       before :each do
         user1 = create(:user)
         @dish = create(:dish, user: user1, public: false)
