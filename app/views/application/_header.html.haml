@@ -1,0 +1,28 @@
+%header.nav.navbar.navbar-dark.bg-menu.navbar-expand-md
+  %button.navbar-toggler{'data-target': '#mainmenu', 'data-toggle': 'collapse', type: 'button'}
+    %span.navbar-toggler-icon
+  #mainmenu.collapse.navbar-collapse
+    %ul.navbar-nav
+      - if user_signed_in?
+        %li.nav-item
+          .nav-link
+            = link_to 'New dish', new_dish_path
+        %li.nav-item
+          .nav-link
+            = link_to 'All dishes', dishes_path
+        %li.nav-item.dropdown
+          .nav-link.dropdown-toggle{'data-toggle': 'dropdown'} #{current_user.nick}
+          .dropdown-menu.bg-menu
+            .dropdown-item
+              = link_to 'Delete account', user_registration_path, method: :delete
+            .dropdown-item
+              = link_to 'Edit account', edit_user_registration_path
+            .dropdown-item
+              = link_to 'Log out', destroy_user_session_path, method: :delete
+      - else
+        %li.nav-item
+          .nav-link
+            = link_to 'Sign up', new_user_registration_path
+        %li.nav-item
+          .nav-link
+            = link_to 'Login', new_user_session_path

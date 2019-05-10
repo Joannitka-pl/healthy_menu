@@ -1,0 +1,52 @@
+@import 'bootstrap';
+@import 'variables';
+@import 'header';
+@import 'body';
+@import 'element';
+
+
+.messages {
+  font-weight: bold;
+  font-size: 2em;
+  position: fixed;
+  bottom:5%;
+  right: 5%;
+}
+
+.notice {
+  @extend .messages;
+  color: #006633;
+}
+
+.alert {
+  @extend .messages;
+  color: #990000;
+}
+
+a:link {
+  color: $color-base;
+}
+
+a:visited {
+  color: darken($color-base, 20%);
+}
+a:hover {
+  color: $color-the-lightest;
+	background-color: $color-base;
+}
+
+ .index {
+   border-style: solid;
+   border-color: #2B435D;
+   border-radius: 10px;
+   background: #FFFFFF;
+   opacity: 0.7;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   color: #2B435D;
+   font-size: 1em;
+   overflow-wrap: break-word;
+   display: inline-block;
+   padding: 20px;
+   text-align: center;
+  }
