@@ -1,42 +1,52 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap';
+@import 'variables';
+@import 'header';
+@import 'body';
+@import 'element';
 
-header.navbar {
-  background-color: #2B435D;
-  border-color: #2B435D;
-  border-radius: 0%;
-}
 
-body {
-  background-size: cover;
-}
-
-.index-bg {
-  background-image: url('index2.jpg');
-}
-
-.element-bg {
-  background-image: url('element.jpg');
-}
-
-.home-bg {
-  background-image: url('home_menu1.jpg');
+.messages {
+  font-weight: bold;
+  font-size: 2em;
+  position: fixed;
+  bottom:5%;
+  right: 5%;
 }
 
 .notice {
+  @extend .messages;
   color: #006633;
-  font-weight: bold;
-  font-size: 2em;
-  position: fixed;
-  bottom: 0;
-  right: 0;
 }
 
 .alert {
+  @extend .messages;
   color: #990000;
-  font-weight: bold;
-  font-size: 2em;
-  position: fixed;
-  bottom: 0;
-  right: 0;
 }
+
+a:link {
+  color: $color-base;
+}
+
+a:visited {
+  color: darken($color-base, 20%);
+}
+a:hover {
+  color: $color-the-lightest;
+	background-color: $color-base;
+}
+
+ .index {
+   border-style: solid;
+   border-color: #2B435D;
+   border-radius: 10px;
+   background: #FFFFFF;
+   opacity: 0.7;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   color: #2B435D;
+   font-size: 1em;
+   overflow-wrap: break-word;
+   display: inline-block;
+   padding: 20px;
+   text-align: center;
+  }

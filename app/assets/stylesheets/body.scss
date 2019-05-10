@@ -1,0 +1,22 @@
+@import 'variables';
+
+@each $part in index, element, home {
+  .#{$part}-bg{
+    background-size: cover;
+      @media #{$monitor} {
+        background: url('#{$part}_monitor.jpg');
+      }
+      @media #{$laptop} {
+        background: url('#{$part}_laptop.jpg');
+      }
+      @media #{$tablet} {
+        background: url('#{$part}_tablet.jpg');
+      }
+      @media #{$phone-h} {
+        background: url('#{$part}_phone_h.jpg');
+      }
+      @media #{$phone} {
+        background: url('#{$part}_phone.jpg');
+      }
+  }
+}

@@ -1,19 +1,23 @@
-= search_form_for @search do |f|
-  = f.label :name_cont
-  = f.search_field :name_cont
+%body.index-bg
+  .container
+    .row.justify-content-center.align-items-center
+      .index
+        = search_form_for @search do |f|
+          = f.label :name_cont, 'name of dish contains'
+          = f.search_field :name_cont
 
-= search_form_for @search do |f|
-  = f.label :user_nick_cont
-  = f.search_field :user_nick_cont
+        = search_form_for @search do |f|
+          = f.label :user_nick_cont, "user's nick contains"
+          = f.search_field :user_nick_cont
 
-= sort_link(@search, :name)
-= sort_link(@search, :created_at)
-= sort_link(@search, :user_nick)
+        %table{cellpadding: "7"}
+          %tr.heading
+            %td= sort_link(@search, :name, 'name of dish')
+            %td= sort_link(@search, :created_at, 'created at')
+            %td= sort_link(@search, :user_nick, "user's nick")
 
-- @dishes.each do |dish|
-  %h4
-    = link_to "#{dish.name}", dish_path(dish)
-    added at
-    = dish.created_at.strftime('%Y-%m-%d')
-    by
-    = dish.user.nick
+          - @dishes.each do |dish|
+            %tr
+              %td= link_to "#{dish.name}", dish_path(dish)
+              %td= dish.created_at.strftime('%Y-%m-%d')
+              %td= dish.user.nick
