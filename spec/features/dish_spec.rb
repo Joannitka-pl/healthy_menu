@@ -13,7 +13,7 @@ feature 'Dish management' do
   context 'for logged user' do
     scenario 'adds a new dish' do
       expect {
-        click_link 'Add new dish'
+        click_link 'New dish'
         fill_in 'Name', with: 'test_dish'
         fill_in 'Details', with: 'very easy dish'
         click_button 'Submit'
@@ -68,13 +68,13 @@ feature 'Dish management' do
       end
 
       scenario 'searches it by name' do
-        fill_in 'Name contains', with: "#{@dish.name}"
+        fill_in 'name of dish contains', with: "#{@dish.name}"
         expect(current_path).to eq dishes_path
         expect(page).to have_content "#{@dish.name}"
       end
 
       scenario "searches it by user's nick" do
-        fill_in 'User Nick contains', with: "#{@dish.user.nick}"
+        fill_in "user's nick contains", with: "#{@dish.user.nick}"
         expect(current_path).to eq dishes_path
         expect(page).to have_content "#{@dish.name}"
       end
@@ -126,13 +126,13 @@ feature 'Dish management' do
       end
 
       scenario 'searches it by name' do
-        fill_in 'Name contains', with: "#{@dish.name}"
+        fill_in 'name of dish contains', with: "#{@dish.name}"
         expect(current_path).to eq dishes_path
         expect(page).to have_content "#{@dish.name}"
       end
 
       scenario "searches it by user's nick" do
-        fill_in 'User Nick contains', with: "#{@dish.user.nick}"
+        fill_in "user's nick contains", with: "#{@dish.user.nick}"
         expect(current_path).to eq dishes_path
         expect(page).to have_content "#{@dish.name}"
       end
@@ -177,13 +177,13 @@ feature 'Dish management' do
       end
 
       scenario 'searches it by name' do
-        fill_in 'Name contains', with: "#{@dish.name}"
+        fill_in 'name of dish contains', with: "#{@dish.name}"
         expect(current_path).to eq dishes_path
         expect(page).to have_content "#{@dish.name}"
       end
 
       scenario "searches it by user's nick" do
-        fill_in 'User Nick contains', with: "#{@dish.user.nick}"
+        fill_in "user's nick contains", with: "#{@dish.user.nick}"
         expect(current_path).to eq dishes_path
         expect(page).to have_content "#{@dish.name}"
       end
@@ -202,13 +202,13 @@ feature 'Dish management' do
       end
 
       scenario 'does not search it by name' do
-        fill_in 'Name contains', with: "#{@dish.name}"
+        fill_in 'name of dish contains', with: "#{@dish.name}"
         expect(current_path).to eq dishes_path
         expect(page).not_to have_content "#{@dish.name}"
       end
 
       scenario "does not search it by user's nick" do
-        fill_in 'User Nick contains', with: "#{@dish.user.nick}"
+        fill_in "user's nick contains", with: "#{@dish.user.nick}"
         expect(current_path).to eq dishes_path
         expect(page).not_to have_content "#{@dish.name}"
       end
@@ -224,24 +224,24 @@ feature 'Dish management' do
       end
 
       scenario 'by name' do
-        click_link 'Name'
-        expect(page).to have_content "#{@dish1.name} added at " +
-        "#{@dish1.created_at.strftime('%Y-%m-%d')} by #{@dish1.user.nick}" +
-        "\n#{@dish2.name} added at #{@dish2.created_at.strftime('%Y-%m-%d')} by #{@dish2.user.nick}"
+        click_link 'name of dish'
+        expect(page).to have_content "#{@dish1.name} " +
+        "#{@dish1.created_at.strftime('%Y-%m-%d')} #{@dish1.user.nick}" +
+        " #{@dish2.name} #{@dish2.created_at.strftime('%Y-%m-%d')} #{@dish2.user.nick}"
       end
 
       scenario 'by created_at' do
-        click_link 'Created at'
-        expect(page).to have_content "#{@dish2.name} added at " +
-        "#{@dish2.created_at.strftime('%Y-%m-%d')} by #{@dish2.user.nick}" +
-        "\n#{@dish1.name} added at #{@dish1.created_at.strftime('%Y-%m-%d')} by #{@dish1.user.nick}"
+        click_link 'created at'
+        expect(page).to have_content "#{@dish2.name} " +
+        "#{@dish2.created_at.strftime('%Y-%m-%d')} #{@dish2.user.nick}" +
+        " #{@dish1.name} #{@dish1.created_at.strftime('%Y-%m-%d')} #{@dish1.user.nick}"
       end
 
       scenario "by user's nick" do
-        click_link 'Nick'
-        expect(page).to have_content "#{@dish2.name} added at " +
-        "#{@dish2.created_at.strftime('%Y-%m-%d')} by #{@dish2.user.nick}" +
-        "\n#{@dish1.name} added at #{@dish1.created_at.strftime('%Y-%m-%d')} by #{@dish1.user.nick}"
+        click_link "user's nick"
+        expect(page).to have_content "#{@dish2.name} " +
+        "#{@dish2.created_at.strftime('%Y-%m-%d')} #{@dish2.user.nick}" +
+        " #{@dish1.name} #{@dish1.created_at.strftime('%Y-%m-%d')} #{@dish1.user.nick}"
       end
     end
 
