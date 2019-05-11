@@ -18,4 +18,5 @@ class User < ApplicationRecord
   end
 
   has_many :dishes, dependent: :destroy
+  has_many :menu_items, dependent: :destroy
 end

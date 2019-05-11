@@ -1,0 +1,18 @@
+%body.index-bg
+  .container-fluid
+    .menu-box
+      %table{:cellpadding => "0", :cellspacing => "0"}
+        %tr.heading
+          %td
+          - @days.each do |day|
+            %td= day.humanize
+        - @meals.each do |meal|
+          %tr
+            %td= meal
+            - @days.each do |day|
+              %td
+                - if @grouped_menu_items[[day, meal]]
+                  - @grouped_menu_items[[day, meal]].each do |menu_item|
+                    = link_to "#{menu_item.dish.name}", dish_path(menu_item.dish.id)
+                    = link_to 'E', edit_dish_menu_item_path(menu_item.dish.id, menu_item)
+                    = link_to 'D', dish_menu_item_path(menu_item.dish.id, menu_item), method: :delete                                       |

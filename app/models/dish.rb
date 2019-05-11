@@ -1,5 +1,7 @@
 class Dish < ApplicationRecord
   belongs_to :user
+  has_many :menu_items, dependent: :destroy
+
   validates :name, presence: true, uniqueness: true
 
   scope :personal, -> { where(public: false) }
