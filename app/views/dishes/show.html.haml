@@ -12,3 +12,4 @@
           - if @dish.user == current_user
             = link_to 'Edit dish', edit_dish_path
             = link_to 'Delete dish', dish_path, method: :delete
+            = link_to 'Add to MENU', new_dish_menu_item_path(@dish)

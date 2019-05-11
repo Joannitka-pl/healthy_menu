@@ -1,0 +1,8 @@
+%h3 @dish.name
+= form_for [@dish, @menu_item] do |menu_item|
+  %h4= menu_item.label :day
+  %h4= menu_item.select :day, options_for_select(@days)
+  %h4= menu_item.label :meal
+  %h4= menu_item.select :meal, options_for_select(@meals)
+  = menu_item.submit 'Submit'
+  = link_to "Cancel", menu_path
