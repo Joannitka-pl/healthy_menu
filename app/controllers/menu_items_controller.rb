@@ -23,6 +23,18 @@ class MenuItemsController < ApplicationController
   def index
     @menu_items = MenuItem.where(user: current_user)
     @grouped_menu_items = MenuItem.all.includes(:dish).group_by { |item| [item.day, item.meal] }
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'menu',
+               orientation: 'Landscape',
+               layout: 'pdf.html',
+               lowquality: true,
+               zoom: 1,
+               dpi: 72,
+               encoding: 'utf8'
+      end
+    end
   end
 
   def destroy
