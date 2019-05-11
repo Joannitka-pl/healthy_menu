@@ -33,6 +33,5 @@ module LoginMacros
         expires_at: DateTime.now,
       }
     })
-end
-
+  end
 end
