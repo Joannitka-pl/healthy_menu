@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2019_05_11_073938) do
   create_table "menu_items", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "dish_id"
-    t.string "day"
-    t.string "meal"
+    t.string "day", null: false
+    t.string "meal", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dish_id"], name: "index_menu_items_on_dish_id"
