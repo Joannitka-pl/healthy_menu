@@ -10,6 +10,12 @@
         %li.nav-item
           .nav-link
             = link_to 'All dishes', dishes_path
+        %li.nav-item
+          .nav-link
+            = link_to 'Menu', menu_path
+        %li.nav-item
+          .nav-link
+            = link_to 'Menu PDF', menu_path(format: :pdf), target: :_blank
         %li.nav-item.dropdown
           .nav-link.dropdown-toggle{'data-toggle': 'dropdown'} #{current_user.nick}
           .dropdown-menu.bg-menu

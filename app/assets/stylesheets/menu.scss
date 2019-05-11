@@ -1,0 +1,32 @@
+.menu-box {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    padding: 30px;
+    border: 3px solid #eee;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .10);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    color: #555;
+}
+
+.menu-box table {
+    width: 100%;
+    height: 842px;
+    text-align: center;
+}
+
+.menu-box table td {
+    padding: 5px;
+    vertical-align: middle;
+    width: 10%;
+    overflow-wrap: break-word;
+    border: 1px solid #eee;
+}
+
+.menu-box table tr.heading td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
