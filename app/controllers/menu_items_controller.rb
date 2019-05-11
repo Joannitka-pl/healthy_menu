@@ -13,7 +13,7 @@ class MenuItemsController < ApplicationController
     @menu_item.dish = @dish
     if @menu_item.save
       redirect_to menu_path,
-      notice: 'Dish has been added to Menu'
+                  notice: 'Dish has been added to Menu'
     else
       flash.now[:alert] = "Ooops, sth's gone wrong"
       render 'new'
@@ -35,7 +35,7 @@ class MenuItemsController < ApplicationController
   def update
     if @menu_item.update(check_params)
       redirect_to menu_path,
-      notice: 'Dish has been moved in Menu'
+                  notice: 'Dish has been moved in Menu'
     else
       flash.now[:alert] = "Ooops, sth's gone wrong"
       render 'new'
